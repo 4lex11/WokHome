@@ -1,0 +1,179 @@
+'use client'
+
+import { Heart, Send, MessageCircle, Music, MapPin, Phone, Mail, Clock, FileText } from 'lucide-react'
+
+interface FooterProps {
+  setCurrentSection: (section: string) => void
+}
+
+export default function Footer({ setCurrentSection }: FooterProps) {
+  return (
+    <footer className="bg-foreground text-background py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          {/* Brand */}
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold">Wok&Home</h3>
+            <p className="text-background/80 text-sm">
+              Autenticidad culinaria Peruano-China en cada plato, llevando tradición a tu hogar.
+            </p>
+            <div className="flex gap-4 pt-4">
+              <a
+                href="https://facebook.com/wokandhome"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-background/10 hover:bg-background/20 rounded-lg transition-colors hover:text-background"
+                aria-label="Facebook"
+              >
+                <Send size={20} />
+              </a>
+              <a
+                href="https://instagram.com/wokandhome"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-background/10 hover:bg-background/20 rounded-lg transition-colors hover:text-background"
+                aria-label="Instagram"
+              >
+                <Heart size={20} />
+              </a>
+              <a
+                href="https://tiktok.com/@wokandhome"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-background/10 hover:bg-background/20 rounded-lg transition-colors hover:text-background"
+                aria-label="TikTok"
+              >
+                <Music size={20} />
+              </a>
+              <a
+                href="https://wa.me/51999888777"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-background/10 hover:bg-background/20 rounded-lg transition-colors hover:text-background"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle size={20} />
+              </a>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="space-y-4">
+            <h4 className="font-semibold text-lg">Navegación</h4>
+            <ul className="space-y-2 text-sm text-background/80">
+              <li>
+                <button onClick={() => setCurrentSection('home')} className="hover:text-background transition-colors">
+                  Inicio
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setCurrentSection('menu')} className="hover:text-background transition-colors">
+                  Menú
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setCurrentSection('about')} className="hover:text-background transition-colors">
+                  Sobre Nosotros
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setCurrentSection('contact')} className="hover:text-background transition-colors">
+                  Contáctenos
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-4">
+            <h4 className="font-semibold text-lg">Servicios</h4>
+            <ul className="space-y-2 text-sm text-background/80">
+              <li>
+                <a href="#" className="hover:text-background transition-colors">
+                  Delivery
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-background transition-colors">
+                  Reservas
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-background transition-colors">
+                  Talleres
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-background transition-colors">
+                  Catering
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h4 className="font-semibold text-lg">Contacto</h4>
+            <div className="space-y-3 text-sm text-background/80">
+              <div className="flex gap-3 items-start">
+                <MapPin size={18} className="flex-shrink-0 mt-0.5" />
+                <span>Calle San Martín 455, Miraflores, Lima</span>
+              </div>
+              <div className="flex gap-3 items-center">
+                <Phone size={18} className="flex-shrink-0" />
+                <span>+51 (1) 242-5555</span>
+              </div>
+              <div className="flex gap-3 items-center">
+                <Mail size={18} className="flex-shrink-0" />
+                <span>info@wokandhome.com</span>
+              </div>
+              <div className="flex gap-3 items-start">
+                <Clock size={18} className="flex-shrink-0 mt-0.5" />
+                <span>L-J: 11:00-23:00 | V-S: 11:00-00:00 | D: 12:00-22:00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Libro de Reclamaciones */}
+        <div className="border-t border-background/20 pt-8 mb-8">
+          <button
+            onClick={() => setCurrentSection('libro-reclamaciones')}
+            className="flex items-center justify-center gap-3 mx-auto max-w-md w-full px-6 py-4 bg-background/10 hover:bg-background/20 rounded-lg transition-colors group"
+          >
+            <FileText size={22} className="flex-shrink-0" />
+            <div className="text-center">
+              <p className="font-semibold text-sm">Libro de Reclamaciones</p>
+              <p className="text-xs text-background/70">
+                Conforme al Código de Protección y Defensa del Consumidor
+              </p>
+            </div>
+          </button>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-background/20 pt-8">
+          <div className="grid md:grid-cols-2 gap-8 text-sm text-background/70">
+            <div>
+              <p>&copy; 2024 Wok&Home. Todos los derechos reservados.</p>
+            </div>
+            <div className="md:text-right space-y-2">
+              <a href="#" className="hover:text-background transition-colors block">
+                Política de Privacidad
+              </a>
+              <a href="#" className="hover:text-background transition-colors block">
+                Términos de Servicio
+              </a>
+              <button
+                onClick={() => setCurrentSection('libro-reclamaciones')}
+                className="hover:text-background transition-colors block md:ml-auto"
+              >
+                Libro de Reclamaciones
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
