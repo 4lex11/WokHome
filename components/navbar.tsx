@@ -1,13 +1,15 @@
 import { ShoppingCart, Menu as MenuIcon, X } from 'lucide-react'
 import { useState } from 'react'
 
-type Section = 'home' | 'menu' | 'about' | 'contact'
+type Section = 'home' | 'menu' | 'about' | 'contact' | 'login'
 
 interface NavbarProps {
   currentSection: Section
   setCurrentSection: (section: Section) => void
   cartItemCount: number
   onCartClick: () => void
+  isLoggedIn: boolean
+  onLogout: () => void
 }
 
 export default function Navbar({
@@ -15,6 +17,8 @@ export default function Navbar({
   setCurrentSection,
   cartItemCount,
   onCartClick,
+  isLoggedIn,
+  onLogout,
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -32,6 +36,9 @@ export default function Navbar({
           {/* Logo */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentSection('home')}>
             <div className="text-2xl font-bold text-primary">Wok&Home</div>
+            <div className="hidden sm:block">
+              <p className="text-xs text-muted-foreground font-medium">Cocina Peruano-China</p>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -49,6 +56,25 @@ export default function Navbar({
                 {item.label}
               </button>
             ))}
+          </div>
+
+          {/* Auth and Cart */}
+          <div className="hidden md:flex items-center gap-4">
+            {isLoggedIn ? (
+              <button
+                onClick={onLogout}
+                className="text-sm font-medium px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+              >
+                Cerrar Sesión
+              </button>
+            ) : (
+              <button
+                onClick={() => setCurrentSection('login')}
+                className="text-sm font-medium px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                Iniciar Sesión
+              </button>
+            )}
           </div>
 
           {/* Cart and Mobile Menu */}
@@ -94,6 +120,29 @@ export default function Navbar({
                 {item.label}
               </button>
             ))}
+            <div className="border-t border-border pt-3 mt-3">
+              {isLoggedIn ? (
+                <button
+                  onClick={() => {
+                    onLogout()
+                    setMobileMenuOpen(false)
+                  }}
+                  className="block w-full text-left px-4 py-2 rounded text-foreground hover:bg-muted transition-colors"
+                >
+                  Cerrar Sesión
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setCurrentSection('login')
+                    setMobileMenuOpen(false)
+                  }}
+                  className="block w-full text-left px-4 py-2 rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                >
+                  Iniciar Sesión
+                </button>
+              )}
+            </div>
           </div>
         )}
       </div>

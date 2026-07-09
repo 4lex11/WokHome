@@ -13,63 +13,39 @@ import Footer from '@/components/footer'
 import ProductDetail from '@/components/product-detail'
 import Checkout from '@/components/checkout'
 import OrderComplete from '@/components/order-complete'
-import LibroReclamaciones from '@/components/libro-reclamaciones'
-
-
-type Section = 'home' | 'menu' | 'about' | 'contact' | 'product' | 'checkout' | 'order-complete' | 'libro-reclamaciones'
-
-interface SelectedProduct {
-  id: string
-  name: string
-  description: string
-  price: number
-  image: string
-  category: 'comida' | 'utensilios' | 'ingredientes'
-}
+import Auth from '@/components/auth'
+import { addToCart, removeFromCart, updateCartQuantity } from '@/lib/cart-utils'
+import type { Section, SelectedProduct, CartItemInput, CartItem } from '@/lib/types'
 
 export default function Page() {
   const [currentSection, setCurrentSection] = useState<Section>('home')
   const [selectedProduct, setSelectedProduct] = useState<SelectedProduct | null>(null)
   const [cartOpen, setCartOpen] = useState(false)
-  const [cartItems, setCartItems] = useState<Array<{
-    id: string
-    name: string
-    price: number
-    quantity: number
-    image: string
-  }>>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userData, setUserData] = useState<{ email: string; name: string } | null>(null)
 
-  const handleAddToCart = (item: {
-    id: string
-    name: string
-    price: number
-    image: string
-  }) => {
-    setCartItems(prevItems => {
-      const existingItem = prevItems.find(i => i.id === item.id)
-      if (existingItem) {
-        return prevItems.map(i =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-        )
-      }
-      return [...prevItems, { ...item, quantity: 1 }]
-    })
+  const handleAddToCart = (item: CartItemInput) => {
+    setCartItems(prevItems => addToCart(prevItems, item))
   }
 
   const handleRemoveFromCart = (id: string) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== id))
+    setCartItems(prevItems => removeFromCart(prevItems, id))
   }
 
   const handleUpdateQuantity = (id: string, quantity: number) => {
-    if (quantity <= 0) {
-      handleRemoveFromCart(id)
-    } else {
-      setCartItems(prevItems =>
-        prevItems.map(item =>
-          item.id === id ? { ...item, quantity } : item
-        )
-      )
-    }
+    setCartItems(prevItems => updateCartQuantity(prevItems, id, quantity))
+  }
+
+  const handleLoginSuccess = (user: { email: string; name: string }) => {
+    setUserData(user)
+    setIsLoggedIn(true)
+    setCurrentSection('home')
+  }
+
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+    setUserData(null)
   }
 
   return (
@@ -79,6 +55,8 @@ export default function Page() {
         setCurrentSection={setCurrentSection}
         cartItemCount={cartItems.length}
         onCartClick={() => setCartOpen(!cartOpen)}
+        isLoggedIn={isLoggedIn}
+        onLogout={handleLogout}
       />
 
       <main>
@@ -113,7 +91,12 @@ export default function Page() {
         )}
         {currentSection === 'about' && <About />}
         {currentSection === 'contact' && <Contact />}
-        {currentSection === 'libro-reclamaciones' && <LibroReclamaciones />}
+        {currentSection === 'login' && (
+          <Auth
+            onLoginSuccess={handleLoginSuccess}
+            onBack={() => setCurrentSection('home')}
+          />
+        )}
         {currentSection === 'checkout' && (
           <Checkout
             items={cartItems}
@@ -131,7 +114,7 @@ export default function Page() {
         )}
       </main>
 
-      <Footer setCurrentSection={setCurrentSection} />
+      <Footer />
 
       {cartOpen && (
         <Cart

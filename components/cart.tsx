@@ -1,4 +1,5 @@
 import { X, Minus, Plus, ShoppingBag } from 'lucide-react'
+import Image from 'next/image'
 
 interface CartItem {
   id: string
@@ -70,18 +71,27 @@ export default function Cart({
                 className="bg-card border border-border rounded-lg p-4 space-y-3"
               >
                 <div className="flex justify-between items-start gap-3">
+                  <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-border/50 bg-muted">
+                    {item.image.startsWith('/') ? (
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <span className="text-4xl flex items-center justify-center w-full h-full">
+                        {item.image}
+                      </span>
+                    )}
+                  </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-3xl">{item.image}</span>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-foreground text-sm">
-                          {item.name}
-                        </h4>
-                        <p className="text-primary font-bold text-sm">
-                          S/. {item.price.toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
+                    <h4 className="font-semibold text-foreground text-sm">
+                      {item.name}
+                    </h4>
+                    <p className="text-primary font-bold text-sm">
+                      S/. {item.price.toFixed(2)}
+                    </p>
                   </div>
                   <button
                     onClick={() => onRemove(item.id)}

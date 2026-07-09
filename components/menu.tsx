@@ -87,7 +87,7 @@ const menuItems: MenuItem[] = [
     description: 'Papa amarilla con atún, aguacate y mayonesa oriental',
     price: 14.00,
     category: 'comida',
-    image: '🥒',
+    image: '/images/causa-oriental.png',
   },
   // Utensilios
   {
@@ -128,7 +128,7 @@ const menuItems: MenuItem[] = [
     description: 'Wok, palillos, mortero y tabla de corte en set exclusivo',
     price: 150.00,
     category: 'utensilios',
-    image: '📦',
+    image: '/images/juego-completo.png',
   },
   {
     id: 'mortero-stone',
@@ -316,7 +316,7 @@ function MenuItemCard({
   onAddToCart,
   onProductClick,
 }: MenuItemCardProps) {
-  const isImagePath = item.image.startsWith('./')
+  const isImagePath = item.image.startsWith('/')
   
   return (
     <div className="bg-card border border-border/50 rounded-xl overflow-hidden hover:border-border transition-all hover:shadow-md flex flex-col h-full cursor-pointer" onClick={() => onProductClick(item)}>

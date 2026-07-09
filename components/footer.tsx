@@ -1,12 +1,8 @@
 'use client'
 
-import { Heart, Send, MessageCircle, Music, MapPin, Phone, Mail, Clock, FileText } from 'lucide-react'
+import { Heart, Send, MessageCircle, Music, MapPin, Phone, Mail, Clock } from 'lucide-react'
 
-interface FooterProps {
-  setCurrentSection: (section: string) => void
-}
-
-export default function Footer({ setCurrentSection }: FooterProps) {
+export default function Footer() {
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,24 +58,24 @@ export default function Footer({ setCurrentSection }: FooterProps) {
             <h4 className="font-semibold text-lg">Navegación</h4>
             <ul className="space-y-2 text-sm text-background/80">
               <li>
-                <button onClick={() => setCurrentSection('home')} className="hover:text-background transition-colors">
+                <a href="#" className="hover:text-background transition-colors">
                   Inicio
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentSection('menu')} className="hover:text-background transition-colors">
+                <a href="#" className="hover:text-background transition-colors">
                   Menú
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentSection('about')} className="hover:text-background transition-colors">
+                <a href="#" className="hover:text-background transition-colors">
                   Sobre Nosotros
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => setCurrentSection('contact')} className="hover:text-background transition-colors">
+                <a href="#" className="hover:text-background transition-colors">
                   Contáctenos
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -135,22 +131,6 @@ export default function Footer({ setCurrentSection }: FooterProps) {
           </div>
         </div>
 
-        {/* Libro de Reclamaciones */}
-        <div className="border-t border-background/20 pt-8 mb-8">
-          <button
-            onClick={() => setCurrentSection('libro-reclamaciones')}
-            className="flex items-center justify-center gap-3 mx-auto max-w-md w-full px-6 py-4 bg-background/10 hover:bg-background/20 rounded-lg transition-colors group"
-          >
-            <FileText size={22} className="flex-shrink-0" />
-            <div className="text-center">
-              <p className="font-semibold text-sm">Libro de Reclamaciones</p>
-              <p className="text-xs text-background/70">
-                Conforme al Código de Protección y Defensa del Consumidor
-              </p>
-            </div>
-          </button>
-        </div>
-
         {/* Divider */}
         <div className="border-t border-background/20 pt-8">
           <div className="grid md:grid-cols-2 gap-8 text-sm text-background/70">
@@ -164,12 +144,6 @@ export default function Footer({ setCurrentSection }: FooterProps) {
               <a href="#" className="hover:text-background transition-colors block">
                 Términos de Servicio
               </a>
-              <button
-                onClick={() => setCurrentSection('libro-reclamaciones')}
-                className="hover:text-background transition-colors block md:ml-auto"
-              >
-                Libro de Reclamaciones
-              </button>
             </div>
           </div>
         </div>

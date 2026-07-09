@@ -29,6 +29,7 @@ export default function Checkout({ items, onComplete, onBack }: CheckoutProps) {
     cvv: '',
   })
 
+  const [paymentMethod, setPaymentMethod] = useState<'card' | 'yape' | 'cash' | 'paypal'>('card')
   const [isProcessing, setIsProcessing] = useState(false)
 
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
@@ -185,50 +186,152 @@ export default function Checkout({ items, onComplete, onBack }: CheckoutProps) {
                 </div>
               </div>
 
-              {/* Información de Pago */}
+              {/* Método de Pago */}
               <div className="bg-card border border-border/50 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Información de Pago</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-6">Método de Pago</h3>
                 
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-foreground mb-3">Número de Tarjeta</label>
-                  <input
-                    type="text"
-                    name="cardNumber"
-                    value={formData.cardNumber}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="1234 5678 9012 3456"
-                    className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                  />
+                <div className="space-y-4 mb-8">
+                  {/* Tarjeta de Crédito */}
+                  <label className="flex items-center p-4 border border-border rounded-lg cursor-pointer hover:bg-background/50 transition-colors" style={{borderColor: paymentMethod === 'card' ? 'var(--color-primary)' : undefined}}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="card"
+                      checked={paymentMethod === 'card'}
+                      onChange={(e) => setPaymentMethod(e.target.value as 'card' | 'yape' | 'cash' | 'paypal')}
+                      className="w-4 h-4"
+                    />
+                    <span className="ml-3 flex-1">
+                      <span className="text-lg font-semibold text-foreground">Tarjeta de Crédito/Débito</span>
+                      <p className="text-sm text-foreground/70">Visa, Mastercard, Amex</p>
+                    </span>
+                    <span className="text-2xl">💳</span>
+                  </label>
+
+                  {/* Yape/Plin */}
+                  <label className="flex items-center p-4 border border-border rounded-lg cursor-pointer hover:bg-background/50 transition-colors" style={{borderColor: paymentMethod === 'yape' ? 'var(--color-primary)' : undefined}}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="yape"
+                      checked={paymentMethod === 'yape'}
+                      onChange={(e) => setPaymentMethod(e.target.value as 'card' | 'yape' | 'cash' | 'paypal')}
+                      className="w-4 h-4"
+                    />
+                    <span className="ml-3 flex-1">
+                      <span className="text-lg font-semibold text-foreground">Yape / Plin</span>
+                      <p className="text-sm text-foreground/70">Billetera digital peruana</p>
+                    </span>
+                    <span className="text-2xl">📱</span>
+                  </label>
+
+                  {/* Efectivo */}
+                  <label className="flex items-center p-4 border border-border rounded-lg cursor-pointer hover:bg-background/50 transition-colors" style={{borderColor: paymentMethod === 'cash' ? 'var(--color-primary)' : undefined}}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="cash"
+                      checked={paymentMethod === 'cash'}
+                      onChange={(e) => setPaymentMethod(e.target.value as 'card' | 'yape' | 'cash' | 'paypal')}
+                      className="w-4 h-4"
+                    />
+                    <span className="ml-3 flex-1">
+                      <span className="text-lg font-semibold text-foreground">Pagar en Efectivo</span>
+                      <p className="text-sm text-foreground/70">Entrega contra pago</p>
+                    </span>
+                    <span className="text-2xl">💵</span>
+                  </label>
+
+                  {/* PayPal */}
+                  <label className="flex items-center p-4 border border-border rounded-lg cursor-pointer hover:bg-background/50 transition-colors" style={{borderColor: paymentMethod === 'paypal' ? 'var(--color-primary)' : undefined}}>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="paypal"
+                      checked={paymentMethod === 'paypal'}
+                      onChange={(e) => setPaymentMethod(e.target.value as 'card' | 'yape' | 'cash' | 'paypal')}
+                      className="w-4 h-4"
+                    />
+                    <span className="ml-3 flex-1">
+                      <span className="text-lg font-semibold text-foreground">PayPal</span>
+                      <p className="text-sm text-foreground/70">Pago seguro internacional</p>
+                    </span>
+                    <span className="text-2xl">🅿️</span>
+                  </label>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-3">Fecha de Vencimiento</label>
-                    <input
-                      type="text"
-                      name="expiryDate"
-                      value={formData.expiryDate}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="MM/AA"
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    />
+                {/* Card Details - Only shown for card payment */}
+                {paymentMethod === 'card' && (
+                  <div className="space-y-6 border-t border-border pt-6">
+                    <div className="mb-6">
+                      <label className="block text-sm font-medium text-foreground mb-3">Número de Tarjeta</label>
+                      <input
+                        type="text"
+                        name="cardNumber"
+                        value={formData.cardNumber}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="1234 5678 9012 3456"
+                        className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                      />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-3">Fecha de Vencimiento</label>
+                        <input
+                          type="text"
+                          name="expiryDate"
+                          value={formData.expiryDate}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="MM/AA"
+                          className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium text-foreground mb-3">CVV</label>
+                        <input
+                          type="text"
+                          name="cvv"
+                          value={formData.cvv}
+                          onChange={handleInputChange}
+                          required
+                          placeholder="123"
+                          className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-3">CVV</label>
-                    <input
-                      type="text"
-                      name="cvv"
-                      value={formData.cvv}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="123"
-                      className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    />
+                )}
+
+                {paymentMethod === 'cash' && (
+                  <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
+                    <p className="text-foreground font-medium">Pago en Efectivo</p>
+                    <p className="text-sm text-foreground/70 mt-2">
+                      El pago se realizará al momento de la entrega. Por favor, ten el monto exacto o cambio disponible.
+                    </p>
                   </div>
-                </div>
+                )}
+
+                {paymentMethod === 'yape' && (
+                  <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
+                    <p className="text-foreground font-medium">Pago por Yape/Plin</p>
+                    <p className="text-sm text-foreground/70 mt-2">
+                      Se te enviará un código QR o número de teléfono para completar el pago inmediatamente después de confirmar tu compra.
+                    </p>
+                  </div>
+                )}
+
+                {paymentMethod === 'paypal' && (
+                  <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
+                    <p className="text-foreground font-medium">Pago con PayPal</p>
+                    <p className="text-sm text-foreground/70 mt-2">
+                      Serás redirigido a PayPal para completar el pago de forma segura.
+                    </p>
+                  </div>
+                )}
               </div>
 
               <button
