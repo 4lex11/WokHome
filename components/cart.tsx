@@ -72,7 +72,7 @@ export default function Cart({
               >
                 <div className="flex justify-between items-start gap-3">
                   <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden border border-border/50 bg-muted">
-                    {item.image.startsWith('/') ? (
+                    {item.image.startsWith('./') ? (
                       <Image
                         src={item.image}
                         alt={item.name}
