@@ -65,7 +65,7 @@ export default function RootLayout({
                 j.async=true;
                 j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
                 f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-W6LRH2CC');
+              })(window,document,'script','dataLayer','G-GYG4M205P5');
             `,
           }}
         />
