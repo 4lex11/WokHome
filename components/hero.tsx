@@ -48,7 +48,7 @@ export default function Hero({ setCurrentSection }: HeroProps) {
           {/* Hero Image */}
           <div className="order-1 md:order-2 relative h-96 md:h-full rounded-xl overflow-hidden border border-border/50">
             <Image
-              src="/images/hero-chifa.png"
+              src="./images/hero-chifa.png"
               alt="Cocina Chifa - Gastronomía Peruano-China"
               fill
               className="object-cover"
@@ -62,7 +62,7 @@ export default function Hero({ setCurrentSection }: HeroProps) {
           <div className="rounded-xl overflow-hidden border border-border/50 hover:border-border transition-all hover:shadow-lg">
             <div className="relative h-64 w-full overflow-hidden bg-muted">
               <Image
-                src="/images/comida-autentica.png"
+                src="./images/comida-autentica.png"
                 alt="Comida Auténtica Chifa"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -77,7 +77,7 @@ export default function Hero({ setCurrentSection }: HeroProps) {
           <div className="rounded-xl overflow-hidden border border-border/50 hover:border-border transition-all hover:shadow-lg">
             <div className="relative h-64 w-full overflow-hidden bg-muted">
               <Image
-                src="/images/utensilios-premium.png"
+                src="./images/utensilios-premium.png"
                 alt="Utensilios Premium"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
@@ -92,7 +92,7 @@ export default function Hero({ setCurrentSection }: HeroProps) {
           <div className="rounded-xl overflow-hidden border border-border/50 hover:border-border transition-all hover:shadow-lg">
             <div className="relative h-64 w-full overflow-hidden bg-muted">
               <Image
-                src="/images/ingredientes-premium.png"
+                src="./images/ingredientes-premium.png"
                 alt="Ingredientes Premium para Llevar"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-300"
