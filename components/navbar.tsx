@@ -1,7 +1,6 @@
 import { ShoppingCart, Menu as MenuIcon, X } from 'lucide-react'
 import { useState } from 'react'
-
-type Section = 'home' | 'menu' | 'about' | 'contact' | 'login'
+import type { Section } from '@/lib/types'
 
 interface NavbarProps {
   currentSection: Section

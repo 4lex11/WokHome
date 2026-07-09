@@ -7,4 +7,4 @@ const nextConfig = {
   basePath: process.env.NODE_ENV === 'production' ? '/WokHome' : '',
 }
 
-module.exports = nextConfig
+export default nextConfig
