@@ -128,7 +128,7 @@ const menuItems: MenuItem[] = [
     description: 'Wok, palillos, mortero y tabla de corte en set exclusivo',
     price: 150.00,
     category: 'utensilios',
-    image: '/images/juego-completo.png',
+    image: './images/juego-completo.png',
   },
   {
     id: 'mortero-stone',
@@ -136,7 +136,7 @@ const menuItems: MenuItem[] = [
     description: 'Mortero de piedra para moler especias y pasta de ají',
     price: 28.00,
     category: 'utensilios',
-    image: '/images/mortero.png',
+    image: './images/mortero.png',
   },
   {
     id: 'tabla-corte',
@@ -144,7 +144,7 @@ const menuItems: MenuItem[] = [
     description: 'Tabla de bambú ecológica para preparar ingredientes frescos',
     price: 35.00,
     category: 'utensilios',
-    image: '/images/tabla-corte.png',
+    image: './images/tabla-corte.png',
   },
   // Ingredientes Premium
   {
@@ -153,7 +153,7 @@ const menuItems: MenuItem[] = [
     description: 'Todo lo necesario para preparar un delicioso Arroz Chaufa: camarones frescos, huevos, verduras selectas y salsa de soya premium',
     price: 42.00,
     category: 'ingredientes',
-    image: '/images/kit-arroz-chaufa.png',
+    image: './images/kit-arroz-chaufa.png',
   },
   {
     id: 'kit-lomo-saltado',
