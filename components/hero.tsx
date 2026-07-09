@@ -48,7 +48,7 @@ export default function Hero({ setCurrentSection }: HeroProps) {
           {/* Hero Image */}
           <div className="order-1 md:order-2 relative h-96 md:h-full rounded-xl overflow-hidden border border-border/50">
             <Image
-              src="/images/hero-chifa.png"
+              src="./images/hero-chifa.png"
               alt="Cocina Chifa - Gastronomía Peruano-China"
               fill
               className="object-cover"
