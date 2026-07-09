@@ -34,7 +34,7 @@ export default function About() {
           <div className="space-y-6 order-1 md:order-2">
             <div className="relative h-96 rounded-xl overflow-hidden border border-border/50">
               <Image
-                src="/images/about-chifa.png"
+                src="./images/about-chifa.png"
                 alt="Restaurante Chifa - Ambiente elegante"
                 fill
                 className="object-cover"
@@ -67,7 +67,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative h-80 rounded-xl overflow-hidden border border-border/50">
               <Image
-                src="/images/heritage-chifa.png"
+                src="./images/heritage-chifa.png"
                 alt="Herencia cultural Chifa"
                 fill
                 className="object-cover"
@@ -138,7 +138,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div className="relative h-80 rounded-xl overflow-hidden border border-border/50">
               <Image
-                src="/images/wok-home-team.png"
+                src="./images/wok-home-team.png"
                 alt="Equipo Wok&Home"
                 fill
                 className="object-cover"
@@ -167,7 +167,7 @@ export default function About() {
             </div>
             <div className="relative h-80 rounded-xl overflow-hidden border border-border/50 order-1 md:order-2">
               <Image
-                src="/images/fresh-ingredients.png"
+                src="./images/fresh-ingredients.png"
                 alt="Ingredientes frescos"
                 fill
                 className="object-cover"
@@ -184,7 +184,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative h-80 rounded-xl overflow-hidden border border-border/50">
               <Image
-                src="/images/chef-cooking.png"
+                src="./images/chef-cooking.png"
                 alt="Chef cocinando en wok"
                 fill
                 className="object-cover"
@@ -215,7 +215,7 @@ export default function About() {
             <div className="group">
               <div className="relative h-48 rounded-xl overflow-hidden border border-border/50 mb-4 hover:border-primary transition-colors">
                 <Image
-                  src="/images/dish-arroz-chaufa.png"
+                  src="./images/dish-arroz-chaufa.png"
                   alt="Arroz Chaufa"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -231,7 +231,7 @@ export default function About() {
             <div className="group">
               <div className="relative h-48 rounded-xl overflow-hidden border border-border/50 mb-4 hover:border-primary transition-colors">
                 <Image
-                  src="/images/dish-lomo-saltado.png"
+                  src="./images/dish-lomo-saltado.png"
                   alt="Lomo Saltado"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -247,7 +247,7 @@ export default function About() {
             <div className="group">
               <div className="relative h-48 rounded-xl overflow-hidden border border-border/50 mb-4 hover:border-primary transition-colors">
                 <Image
-                  src="/images/dish-ceviche.png"
+                  src="./images/dish-ceviche.png"
                   alt="Ceviche"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -263,7 +263,7 @@ export default function About() {
             <div className="group">
               <div className="relative h-48 rounded-xl overflow-hidden border border-border/50 mb-4 hover:border-primary transition-colors">
                 <Image
-                  src="/images/dish-talarin.png"
+                  src="./images/dish-talarin.png"
                   alt="Tallarín Saltado"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -279,7 +279,7 @@ export default function About() {
             <div className="group">
               <div className="relative h-48 rounded-xl overflow-hidden border border-border/50 mb-4 hover:border-primary transition-colors">
                 <Image
-                  src="/images/dish-wantan.png"
+                  src="./images/dish-wantan.png"
                   alt="Sopa Wantán"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
