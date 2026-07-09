@@ -316,7 +316,7 @@ function MenuItemCard({
   onAddToCart,
   onProductClick,
 }: MenuItemCardProps) {
-  const isImagePath = item.image.startsWith('/')
+  const isImagePath = item.image.startsWith('./')
   
   return (
     <div className="bg-card border border-border/50 rounded-xl overflow-hidden hover:border-border transition-all hover:shadow-md flex flex-col h-full cursor-pointer" onClick={() => onProductClick(item)}>
