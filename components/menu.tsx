@@ -31,7 +31,7 @@ const menuItems: MenuItem[] = [
     description: 'Arroz salteado con wok, camarones, pollo y verduras frescas',
     price: 28.50,
     category: 'comida',
-    image: '/images/arroz-chaufa.png',
+    image: './images/arroz-chaufa.png',
   },
   {
     id: 'lomo-saltado',
@@ -39,7 +39,7 @@ const menuItems: MenuItem[] = [
     description: 'Lomo fino salteado con ají, cebolla y toque de salsa de soya',
     price: 35.00,
     category: 'comida',
-    image: '/images/lomo-saltado.png',
+    image: './images/lomo-saltado.png',
   },
   {
     id: 'tamarind-fish',
@@ -47,7 +47,7 @@ const menuItems: MenuItem[] = [
     description: 'Pescado fresco marinado con yuzu, ají y jengibre',
     price: 32.00,
     category: 'comida',
-    image: '/images/ceviche.png',
+    image: './images/ceviche.png',
   },
   {
     id: 'talarin-saltado',
@@ -55,7 +55,7 @@ const menuItems: MenuItem[] = [
     description: 'Fideos salteados al wok con pollo, vegetales y salsa umami',
     price: 26.50,
     category: 'comida',
-    image: '/images/talarin-saltado.png',
+    image: './images/talarin-saltado.png',
   },
   {
     id: 'wantan-peruano',
@@ -63,7 +63,7 @@ const menuItems: MenuItem[] = [
     description: 'Dumplings rellenos de camarón, ají y especias peruanas',
     price: 18.00,
     category: 'comida',
-    image: '/images/wantan.png',
+    image: './images/wantan.png',
   },
   {
     id: 'sopa-wonton',
@@ -71,7 +71,7 @@ const menuItems: MenuItem[] = [
     description: 'Caldo aromático con dumplings, pollo y vegetales frescos',
     price: 15.50,
     category: 'comida',
-    image: '/images/sopa-chifa.png',
+    image: './images/sopa-chifa.png',
   },
   {
     id: 'camote-frito',
@@ -79,7 +79,7 @@ const menuItems: MenuItem[] = [
     description: 'Pato peruano asado con técnica wok y salsa tradicional',
     price: 38.00,
     category: 'comida',
-    image: '/images/pato-criolla.png',
+    image: './images/pato-criolla.png',
   },
   {
     id: 'causa-oriental',
@@ -96,7 +96,7 @@ const menuItems: MenuItem[] = [
     description: 'Wok tradicional de acero al carbón, perfecta conducción de calor',
     price: 65.00,
     category: 'utensilios',
-    image: '/images/wok-tradicional.png',
+    image: './images/wok-tradicional.png',
   },
   {
     id: 'wok-antiadherente',
@@ -104,7 +104,7 @@ const menuItems: MenuItem[] = [
     description: 'Sartén moderna con revestimiento antiadherente, fácil de limpiar',
     price: 55.00,
     category: 'utensilios',
-    image: '/images/sarten-chaufa.png',
+    image: './images/sarten-chaufa.png',
   },
   {
     id: 'palillos-bamboo',
@@ -112,7 +112,7 @@ const menuItems: MenuItem[] = [
     description: 'Palillos de bambú auténtico, ideales para cocinar y comer',
     price: 18.00,
     category: 'utensilios',
-    image: '/images/palillos-chifa.png',
+    image: './images/palillos-chifa.png',
   },
   {
     id: 'cuchilla-profesional',
@@ -120,7 +120,7 @@ const menuItems: MenuItem[] = [
     description: 'Cuchillo de acero inoxidable para corte profesional',
     price: 45.00,
     category: 'utensilios',
-    image: '/images/cuchilla-profesional.png',
+    image: './images/cuchilla-profesional.png',
   },
   {
     id: 'juego-complete',
@@ -136,7 +136,7 @@ const menuItems: MenuItem[] = [
     description: 'Mortero de piedra para moler especias y pasta de ají',
     price: 28.00,
     category: 'utensilios',
-    image: '/images/mortero.png',
+    image: './images/mortero.png',
   },
   {
     id: 'tabla-corte',
@@ -144,7 +144,7 @@ const menuItems: MenuItem[] = [
     description: 'Tabla de bambú ecológica para preparar ingredientes frescos',
     price: 35.00,
     category: 'utensilios',
-    image: '/images/tabla-corte.png',
+    image: './images/tabla-corte.png',
   },
   // Ingredientes Premium
   {
@@ -153,7 +153,7 @@ const menuItems: MenuItem[] = [
     description: 'Todo lo necesario para preparar un delicioso Arroz Chaufa: camarones frescos, huevos, verduras selectas y salsa de soya premium',
     price: 42.00,
     category: 'ingredientes',
-    image: '/images/kit-arroz-chaufa.png',
+    image: './images/kit-arroz-chaufa.png',
   },
   {
     id: 'kit-lomo-saltado',
@@ -161,7 +161,7 @@ const menuItems: MenuItem[] = [
     description: 'Lomo Premium cortado, papas selectas, cebollas, ají rocoto y salsa especial para un Lomo Saltado perfecto',
     price: 58.00,
     category: 'ingredientes',
-    image: '/images/kit-lomo-saltado.png',
+    image: './images/kit-lomo-saltado.png',
   },
   {
     id: 'kit-ceviche',
@@ -169,7 +169,7 @@ const menuItems: MenuItem[] = [
     description: 'Pescado fresco del día, limones, ají, cilantro y cebolla morada para preparar un auténtico Ceviche Peruano',
     price: 52.00,
     category: 'ingredientes',
-    image: '/images/kit-ceviche.png',
+    image: './images/kit-ceviche.png',
   },
   {
     id: 'kit-talarin-saltado',
@@ -177,7 +177,7 @@ const menuItems: MenuItem[] = [
     description: 'Tallarín fresco, pollo Premium, verduras variadas, jengibre y salsa umami para un Tallarín Saltado delicioso',
     price: 39.00,
     category: 'ingredientes',
-    image: '/images/kit-talarin.png',
+    image: './images/kit-talarin.png',
   },
 ]
 

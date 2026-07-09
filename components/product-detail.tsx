@@ -24,7 +24,7 @@ interface ProductDetailProps {
 
 export default function ProductDetail({ product, onBack, onAddToCart }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
-  const isImagePath = product.image.startsWith('/')
+  const isImagePath = product.image.startsWith('.')
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
