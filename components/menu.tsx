@@ -31,7 +31,7 @@ const menuItems: MenuItem[] = [
     description: 'Arroz salteado con wok, camarones, pollo y verduras frescas',
     price: 28.50,
     category: 'comida',
-    image: '/images/arroz-chaufa.png',
+    image: './images/arroz-chaufa.png',
   },
   {
     id: 'lomo-saltado',
