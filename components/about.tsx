@@ -34,7 +34,7 @@ export default function About() {
           <div className="space-y-6 order-1 md:order-2">
             <div className="relative h-96 rounded-xl overflow-hidden border border-border/50">
               <Image
-                src="/images/about-chifa.png"
+                src="./images/about-chifa.png"
                 alt="Restaurante Chifa - Ambiente elegante"
                 fill
                 className="object-cover"
