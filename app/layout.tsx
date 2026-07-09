@@ -48,8 +48,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="bg-background">
-      <head>
-        {/* Google Analytics */}
+      <body className="antialiased">
+        {/* Google Analytics (GA4) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BG4N9YE1CV"
           strategy="afterInteractive"
@@ -64,25 +64,12 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', 'G-BG4N9YE1CV');
+              gtag('config', 'G-BG4N9YE1CV', {
+                page_path: window.location.pathname,
+              });
             `,
           }}
         />
-      </head>
-
-      <body className="antialiased">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-W6LRH2CC"
-            height="0"
-            width="0"
-            style={{
-              display: "none",
-              visibility: "hidden",
-            }}
-          />
-        </noscript>
 
         {children}
 
