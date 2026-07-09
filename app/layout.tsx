@@ -1,5 +1,4 @@
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
@@ -49,7 +48,6 @@ export default function RootLayout({
   return (
     <html lang="es" className="bg-background">
       <body className="antialiased">
-        {/* Google Analytics (GA4) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BG4N9YE1CV"
           strategy="afterInteractive"
@@ -62,18 +60,18 @@ export default function RootLayout({
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
+
               gtag('js', new Date());
 
               gtag('config', 'G-BG4N9YE1CV', {
-                page_path: window.location.pathname,
+                send_page_view: true,
+                anonymize_ip: true
               });
             `,
           }}
         />
 
         {children}
-
-        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   );
