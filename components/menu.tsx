@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { ShoppingCart, ChevronDown } from 'lucide-react'
+import { ShoppingCart, ChevronDown, ImageOff } from 'lucide-react'
 
 interface MenuItem {
   id: string
@@ -128,7 +128,7 @@ const menuItems: MenuItem[] = [
     description: 'Wok, palillos, mortero y tabla de corte en set exclusivo',
     price: 150.00,
     category: 'utensilios',
-    image: './images/juego-completo.png',
+    image: '/images/juego-completo.png',
   },
   {
     id: 'mortero-stone',
@@ -136,7 +136,7 @@ const menuItems: MenuItem[] = [
     description: 'Mortero de piedra para moler especias y pasta de ají',
     price: 28.00,
     category: 'utensilios',
-    image: './images/mortero.png',
+    image: '/images/mortero.png',
   },
   {
     id: 'tabla-corte',
@@ -144,7 +144,7 @@ const menuItems: MenuItem[] = [
     description: 'Tabla de bambú ecológica para preparar ingredientes frescos',
     price: 35.00,
     category: 'utensilios',
-    image: './images/tabla-corte.png',
+    image: '/images/tabla-corte.png',
   },
   // Ingredientes Premium
   {
@@ -153,7 +153,7 @@ const menuItems: MenuItem[] = [
     description: 'Todo lo necesario para preparar un delicioso Arroz Chaufa: camarones frescos, huevos, verduras selectas y salsa de soya premium',
     price: 42.00,
     category: 'ingredientes',
-    image: './images/kit-arroz-chaufa.png',
+    image: '/images/kit-arroz-chaufa.png',
   },
   {
     id: 'kit-lomo-saltado',
@@ -316,22 +316,29 @@ function MenuItemCard({
   onAddToCart,
   onProductClick,
 }: MenuItemCardProps) {
-  const isImagePath = item.image.startsWith('/')
-  
+  const [imageError, setImageError] = useState(false)
+  const isImagePath = item.image.startsWith('/') || item.image.startsWith('./')
+  const showImage = isImagePath && !imageError
+
   return (
     <div className="bg-card border border-border/50 rounded-xl overflow-hidden hover:border-border transition-all hover:shadow-md flex flex-col h-full cursor-pointer" onClick={() => onProductClick(item)}>
       {/* Image Section */}
       {isImagePath && (
-        <div className="relative h-48 w-full overflow-hidden bg-muted hover:opacity-90 transition-opacity">
-          <Image
-            src={item.image}
-            alt={item.name}
-            fill
-            className="object-cover"
-          />
+        <div className="relative h-48 w-full overflow-hidden bg-muted hover:opacity-90 transition-opacity flex items-center justify-center">
+          {showImage ? (
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              className="object-cover"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <ImageOff className="text-foreground/30" size={32} />
+          )}
         </div>
       )}
-      
+
       <div className="p-8 flex flex-col flex-grow">
         {!isImagePath && (
           <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center text-3xl mb-6">
@@ -339,7 +346,7 @@ function MenuItemCard({
           </div>
         )}
         <h4 className="text-lg font-semibold text-foreground mb-3">{item.name}</h4>
-        
+
         <p className={`text-foreground/70 text-sm mb-4 transition-all flex-grow ${
           isExpanded ? 'line-clamp-none' : 'line-clamp-2'
         }`}>
